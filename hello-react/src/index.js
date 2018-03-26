@@ -14,67 +14,54 @@ import './index.css';
 // ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
 
-//这是标题组件
-class Title extends Component{
-  //一个函数
-  handleClickOnTitle(){
-    console.log("点击了标题")
+class LikeButton extends Component {
+  //  默认配置,不在构造函数里面！
+  static defaultProps={
+    likeText:'取消aa',
+    unlikeText:'点赞bb'
+  }
+  constructor () {
+    super()
+    this.state = {
+      isLiked: false,
+    }
+
+
   }
 
-  render(){
-    return(
-      <h1 style={{cursor:'pointer'}} onClick={this.handleClickOnTitle}>这是标题title</h1>
+
+
+  handleClickOnLikeButton () {
+    this.setState({
+      isLiked: !this.state.isLiked,
+    })
+  //  如果有this.props.onClick属性的话就执行
+    if(this.props.onClick){
+      this.props.onClick()
+    }
+
+  }
+
+  render () {
+    return (
+      <button onClick={this.handleClickOnLikeButton.bind(this)}>
+        {this.state.isLiked ? this.props.likeText : this.props.unlikeText} 👍
+      </button>
     )
   }
 }
 
-//这是Header组件
-class Header extends Component {
+class Index extends Component {
   render () {
     return (
       <div>
-        <Title />
-        <h2>这是头部header</h2>
+        <LikeButton/>
       </div>
     )
   }
 }
 
-class Main extends Component{
-  render(){
-    return(
-      <div>
-        <h2>这是主要内容mian</h2>
-      </div>
-    )
-  }
-}
-
-class Footer extends Component{
-  render(){
-    return(
-      <div>
-        <h2>这是底部footer</h2>
-      </div>
-    )
-  }
-}
-
-class Index extends Component{
-  render(){
-    return (
-    <div>
-      <Header/>
-      <Main/>
-      <Footer/>
-    </div>
-    )
-  }
-}
-//把DOM元素塞到页面上
-//ReactDOM.render功能就是把组件渲染并构造DOM树，
-// 然后插入到页面某个特定的元素上
-//(这里是id为root的div元素)
+// {<LikeButton/>,}
 ReactDOM.render(
   <Index/>,
   document.getElementById('root')
