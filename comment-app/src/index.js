@@ -236,9 +236,60 @@ class AutoFocusInput extends Component{
   }
 }
 
+class Card extends Component{
+  constructor(){
+    super()
+    this.state = {
+    }
+
+  }
+
+  componentWillMount(){
+
+  }
+
+  render(){
+
+    return(
+      <div>
+        <div>{this.props.children[1]}</div>
+        <div>{this.props.children[1]}</div>
+      </div>
+    )
+  }
+
+  componentDidMount(){
+
+  }
+  componentWillUnmount () {
+
+  }
+}
+
+
+
+class BlackBorderContainer extends Component {
+  render () {
+    return (
+      <div>
+        {this.props.children.map((item)=>
+          <div style={{border:'1px solid #000000'}}>
+            {item}
+          </div>
+        )}
+      </div>
+    )
+  }
+}
+
 
 ReactDOM.render(
-  <AutoFocusInput />,
+  <Card>
+    <h2>111111</h2>
+    <div>22222</div>
+
+  </Card>
+    ,
   document.getElementById('root')
 )
 
