@@ -1,7 +1,13 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types'
+
 
 class CommentInput extends Component{
+  static propTypes={
+    fabuInputOut:PropTypes.func
+  }
+
   constructor(){
     super()
     this.state={
@@ -23,6 +29,28 @@ class CommentInput extends Component{
     //点击发布就清空内容
     this.setState({content:''})
   }
+  //将用户名保存在localstroage中
+  //所有私有方法都以 _开头
+
+  changeUsername(event){
+    this.setState({username:event.target.value})
+  }
+  saveUsername(event){
+    localStorage.setItem('username',event.target.value)
+    console.log(localStorage)
+  }
+
+  _loadUserName(){
+    let username=localStorage.getItem('username')
+    if(username){
+      this.setState({username})
+    }
+  }
+
+  //在渲染前加载用户名
+  componentWillMount(){
+    this._loadUserName()
+  }
 
   render(){
     return(
@@ -30,15 +58,18 @@ class CommentInput extends Component{
         <div className='comment-field'>
           <span className='comment-field-name'>用户名：</span>
           <div className='comment-field-input'>
-
-            <input value={this.state.username} onChange={(event)=>{this.setState({username:event.target.value})}}/>
+            <input
+              value={this.state.username}
+              onChange={this.changeUsername.bind(this)}
+              onBlur={this.saveUsername.bind(this)}
+            />
           </div>
         </div>
 
         <div className='comment-field'>
           <span className='comment-field-name'>评论内容：</span>
           <div className='comment-field-input'>
-            <textarea value={this.state.content} onChange={(event)=>{this.setState({content:event.target.value})}}/>
+            <textarea  ref={(textarea)=>this.textareaa=textarea} value={this.state.content} onChange={(event)=>{this.setState({content:event.target.value})}}/>
           </div>
         </div>
 
@@ -48,6 +79,11 @@ class CommentInput extends Component{
       </div>
     )
   }
+
+  componentDidMount(){
+    this.textareaa.focus()
+  }
+
 }
 
 export default CommentInput

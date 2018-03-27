@@ -329,8 +329,7 @@ class Aaa extends Component{
 }
 
 ReactDOM.render(
-  <Aaa >
-  </Aaa>
+  <CommentApp />
     ,
   document.getElementById('root')
 )
