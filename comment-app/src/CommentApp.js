@@ -39,12 +39,24 @@ class CommentApp extends Component {
     localStorage.setItem('comments',JSON.stringify(comments))
   }
 
+  handleDeleteComment(index){
+    let comments=this.state.comments
+    comments.splice(index,1)
+    //刷新状态
+    this.setState({comments})
+    //更改localstroage中的评论
+    this._saveComments(comments)
+  }
+
   render() {
     //通过传入回调函数获取数据
     return (
       <div className='wrapper'>
         <CommentInput fabuInputOut={this.fabuApp.bind(this)}/>
-        <CommentList comments={this.state.comments}/>
+        <CommentList
+          comments={this.state.comments}
+          onDeleteComment={this.handleDeleteComment.bind(this)}
+        />
       </div>
     )
   }
