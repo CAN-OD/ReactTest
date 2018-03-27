@@ -121,10 +121,124 @@ class Index extends Component{
 
 }
 
+class Clock extends Component {
+  constructor () {
+    super()
+    this.state = {
+      date:new Date(),
+    }
+  }
+
+
+  //一些组件启动的动作，包括像Ajax数据的拉取操作
+  //一些定时器的启动等，放在componentWillMount执行
+  componentWillMount(){
+    console.log("组件将嵌入")
+    //从后台获取的数据
+    // ajax.get('http://json-api.com/user',(userData)=>{
+    //   this.setState({userData})
+    // })
+
+  //  定时器
+    this.timer=setInterval(()=>{
+      this.setState({date:new Date()})
+    },1000)
+
+  }
+
+  render () {
+    return (
+      <div>
+        <h1>
+          <p>现在的时间是:</p>
+          {this.state.date.getSeconds()}
+        </h1>
+
+      </div>
+    )
+  }
+
+  //删除组件的时候记得要清除定时器
+  componentWillUnmount () {
+    clearInterval(this.timer)
+  }
+}
+
+class ShowClock extends Component{
+  constructor(){
+    super()
+    this.state={
+      isShow:true
+    }
+    console.log("constructor")
+  }
+
+  showOrHide(){
+    this.setState({
+      isShow:!this.state.isShow
+    })
+  }
+
+
+  componentWillMount(){
+    console.log("组件将嵌入")
+  }
+
+  render(){
+    console.log("render")
+    return(
+      <div>
+        {this.state.isShow?<Clock/>:null}
+        <button onClick={this.showOrHide.bind(this)}>
+          显示或隐藏时钟
+        </button>
+      </div>
+    )
+  }
+
+  componentDidMount(){
+    console.log("组件已被嵌入")
+  }
+}
+
+class AutoFocusInput extends Component{
+  constructor(){
+    super()
+    this.state = {
+    }
+    console.log("constructor")
+  }
+
+  componentWillMount(){
+    console.log("组件将嵌入")
+  }
+
+  render(){
+    console.log("render")
+    //先给input标签设置ref属性
+    //ref属性会将该DOM节点传给inputa
+    //这样，我们就可以直接操作DOM了
+    return(
+      <div>
+        <input value='aaa'/>
+        <input ref={(input)=>this.inputa=input}/>
+      </div>
+
+    )
+  }
+
+  componentDidMount(){
+    console.log("组件已被嵌入")
+    this.inputa.focus()
+  }
+  componentWillUnmount () {
+
+  }
+}
 
 
 ReactDOM.render(
-  <Index />,
+  <AutoFocusInput />,
   document.getElementById('root')
 )
 
