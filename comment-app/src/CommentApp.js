@@ -18,7 +18,25 @@ class CommentApp extends Component {
     if(!comment.content) return alert('请输入评论内容')
     this.state.comments.push(comment)
     this.setState({comments:this.state.comments})
+    this._saveComments(this.state.comments)
+  }
 
+  componentWillMount(){
+    this._loadComments()
+  }
+
+  _loadComments(){
+    let comments=localStorage.getItem("comments")
+    if(comments){
+    //  将其转换为json格式
+      comments= JSON.parse(comments)
+      this.setState({comments})
+    }
+  }
+
+  _saveComments(comments){
+    //将数组comments全部转化为字符串存进去
+    localStorage.setItem('comments',JSON.stringify(comments))
   }
 
   render() {

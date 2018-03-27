@@ -12,7 +12,8 @@ class CommentInput extends Component{
     super()
     this.state={
       username:'',
-      content:''
+      content:'',
+      punishTime:''
     }
   }
   //发布按钮
@@ -21,10 +22,14 @@ class CommentInput extends Component{
     if(this.props.fabuInputOut){
       //重新定义变量把state中的属性传入
       //为什么?因为state改变不会立即改变
-      let {username,content}=this.state
+      // let {username,content}=this.state
       //就调用该函数，把username,content传进去
       //子传父
-      this.props.fabuInputOut({username,content})
+      this.props.fabuInputOut({
+        username:this.state.username,
+        content:this.state.content,
+        punishTime: +new Date()
+      })
     }
     //点击发布就清空内容
     this.setState({content:''})
