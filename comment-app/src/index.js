@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import CommentApp from "./CommentApp";
-
+//在头部引入该库
+import PropTypes from 'prop-types'
 
 class Input extends Component {
   constructor(){
@@ -282,13 +283,54 @@ class BlackBorderContainer extends Component {
   }
 }
 
+class Editor extends Component {
+  constructor() {
+    super()
+    this.state = {
+      content: '<h1>React.js 小书</h1>'
+    }
+  }
+  render () {
+    return (
+      <div className='editor-wrapper'
+           dangerouslySetInnerHTML={{__html:this.state.content}}/>
+    )
+  }
+}
+
+class Proptype extends Component{
+  static propTypes={
+    //传入的类型必须为对象object
+    comment:PropTypes.object.isRequired
+  }
+
+  render(){
+    let {comment}=this.props
+    return(
+      <div className='comment'>
+        <div className='comment-user'>
+          <span>{comment} </span>：
+        </div>
+        <p>{comment}</p>
+      </div>
+
+    )
+  }
+}
+
+class Aaa extends Component{
+  render(){
+    return(
+      <div>
+      <Proptype />
+      </div>
+    )
+  }
+}
 
 ReactDOM.render(
-  <Card>
-    <h2>111111</h2>
-    <div>22222</div>
-
-  </Card>
+  <Aaa >
+  </Aaa>
     ,
   document.getElementById('root')
 )
