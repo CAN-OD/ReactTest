@@ -71,10 +71,60 @@ class PercentageApp extends Component {
   }
 }
 
+class Header extends Component{
+  constructor(){
+    super()
+    console.log("constructor")
+  }
+
+  componentWillMount(){
+    console.log("组件将嵌入")
+  }
+
+  render(){
+    console.log("render")
+    return(
+      <div>啊啊啊啊啊啊</div>
+    )
+  }
+
+  componentDidMount(){
+    console.log("组件已被嵌入")
+  }
+
+
+}
+
+class Index extends Component{
+  constructor(){
+    super()
+    this.state={
+      isShow:true
+    }
+  }
+ showOrHide(){
+    this.setState({
+      isShow:!this.state.isShow
+    })
+ }
+
+ render(){
+    return(
+      <div>
+        {this.state.isShow?<Header/>:null}
+        <button onClick={this.showOrHide.bind(this)}>
+          显示或隐藏标题
+        </button>
+      </div>
+    )
+ }
+
+}
+
 
 
 ReactDOM.render(
-  <PercentageApp />,
+  <Index />,
   document.getElementById('root')
 )
 
