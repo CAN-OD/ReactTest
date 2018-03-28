@@ -13,7 +13,9 @@ function createStore(state,stateChanger){
   //同时会遍历listeners里的函数并去调用 ()
   const dispatch=(action)=>{
     //数据修改
-    stateChanger(state,action)
+    // stateChanger(state,action)
+    //覆盖原来的对象
+    state=stateChanger(state,action)
     //遍历listeners数组里面的函数
     listeners.forEach((listener)=>listener())
   }
@@ -21,21 +23,47 @@ function createStore(state,stateChanger){
 }
 
 
-function renderApp (appState) {
-  renderTitle(appState.title)
-  renderContent(appState.content)
+// function renderApp (appState) {
+//   renderTitle(appState.title)
+//   renderContent(appState.content)
+// }
+//在函数执行渲染操作之前先做判断
+//判断传入的新数据和旧数据是不是相同，相同就不渲染了
+//为防止oldAppState没有传入，所以我们添加一个默认值 {}
+function renderApp (newAppState,oldAppState={}) {
+  //数据相同就不渲染
+  if(newAppState===oldAppState)
+  {return}
+  renderTitle(newAppState.title,oldAppState.title)
+  renderContent(newAppState.content,oldAppState.content)
 }
 
-function renderTitle (title) {
+
+
+// function renderTitle (title) {
+//   const titleDOM = document.getElementById('title')
+//   titleDOM.innerHTML = title.text
+//   titleDOM.style.color = title.color
+// }
+
+function renderTitle (newTitle,oldTitle={}) {
+  if (newTitle === oldTitle) return
   const titleDOM = document.getElementById('title')
-  titleDOM.innerHTML = title.text
-  titleDOM.style.color = title.color
+  titleDOM.innerHTML = newTitle.text
+  titleDOM.style.color = newTitle.color
 }
 
-function renderContent (content) {
+// function renderContent (content) {
+//   const contentDOM = document.getElementById('content')
+//   contentDOM.innerHTML = content.text
+//   contentDOM.style.color = content.color
+// }
+
+function renderContent (newContent,oldContent={}) {
+  if(newContent===oldContent) return
   const contentDOM = document.getElementById('content')
-  contentDOM.innerHTML = content.text
-  contentDOM.style.color = content.color
+  contentDOM.innerHTML = newContent.text
+  contentDOM.style.color = newContent.color
 }
 
 const appState = {
@@ -48,6 +76,22 @@ const appState = {
     color: 'blue'
   }
 }
+
+//新建一个newAppstate，复制appState
+let newAppState={
+  ...appState,
+  title:{...appState.title,text:'《Reactjs小书》'}
+}
+
+//同理，修改color
+let newAppState1 = { // 新建一个 newAppState1
+  ...newAppState, // 复制 newAppState1 里面的内容
+  title: { // 用一个新的对象覆盖原来的 title 属性
+    ...newAppState.title, // 复制原来 title 对象里面的内容
+    color: "blue" // 覆盖 color 属性
+  }
+}
+
 //定义一个函数，专门负责数据的修改
 // function dispatch (action) {
 //   switch (action.type) {
@@ -62,16 +106,34 @@ const appState = {
 //   }
 // }
 
+//修改stateChanger，让它在修改数据的时候，
+// 不会直接修改原来的数据state，
+// 而是产生上述的共享结构的对象
 function stateChanger(state,action){
   switch(action.type){
     case 'UPDATE_TITLE_TEXT':
-      state.title.text = action.text
-      break
+      // state.title.text = action.text
+      //构建新的对象并返回
+      return {
+        ...state,
+        title:{
+          //先复制title里的内容，再去覆盖title的text
+          ...state.title,
+          text:action.text
+        }
+      }
     case 'UPDATE_TITLE_COLOR':
-      state.title.color = action.color
-      break
+      // state.title.color = action.color
+      return{
+        ...state,
+        title: {
+          ...state.title,
+          color: action.color
+        }
+      }
     default:
-      break
+  //    没有修改，返回原来的对象
+      return state
   }
 }
 //想要修改text，必须使用dispatch函数
@@ -90,7 +152,22 @@ dispatch({
 //断点就可以调试出来了
 
 let store=createStore(appState,stateChanger)
-store.subscribe(()=>renderApp(store.getState()))
+//缓存旧的state
+let oldState=store.getState()
+//由下面的dispatch可以看到，我们只需要修改title
+//但却把renderApp全部都渲染了一遍,不能做到局部刷新
+store.subscribe(()=>{
+  //数据可能变化，获取新的state
+  let newState=store.getState()
+    //把新旧的state传进去渲染
+    renderApp(newState,oldState)
+  //渲染完后，新的newState变成旧的oldState
+  //等待下一次数据变化重新渲染
+  oldState=newState
+  }
+
+
+  )
 // renderApp(appState)
 renderApp(store.getState())
 store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: '《React.js a小书》' }) // 修改标题文本
