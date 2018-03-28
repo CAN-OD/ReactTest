@@ -4,6 +4,8 @@ import './index.css';
 import CommentApp from "./CommentApp";
 //在头部引入该库
 import PropTypes from 'prop-types'
+import InputWithUserName from './InputWithUserName'
+import TextContent from "./TextContent";
 
 class Input extends Component {
   constructor(){
@@ -35,8 +37,6 @@ class PercentageShower extends Component {
   static defaultProps={
     pernumber:0
   }
-
-
 
   render () {
     return (
@@ -267,8 +267,6 @@ class Card extends Component{
   }
 }
 
-
-
 class BlackBorderContainer extends Component {
   render () {
     return (
@@ -328,8 +326,23 @@ class Aaa extends Component{
   }
 }
 
+class UserName extends Component{
+
+
+
+  render(){
+    return(
+      <div>
+        用户名：<InputWithUserName />
+        内容：<TextContent/>
+      </div>
+    )
+  }
+
+}
+
 ReactDOM.render(
-  <CommentApp />
+  <UserName />
     ,
   document.getElementById('root')
 )

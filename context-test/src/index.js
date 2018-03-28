@@ -1,24 +1,25 @@
 //创建store包含state定义内容和dispatch修改内容
-function createStore(state,stateChanger){
+function createStore(reducer){
+  let state=null
   //使用观察者模式
   let listeners=[]
   //我们可以通过
   // store.subscribe(() => renderApp(store.getState()))
   //给subscribe传一个监听函数,该函数renderApp会被push到数组中
   let subscribe=(listener)=>listeners.push(listener)
-
   let getState= ()=> state
-
   //每次调用dispatch的时候都会进行数据的修改
   //同时会遍历listeners里的函数并去调用 ()
   const dispatch=(action)=>{
     //数据修改
     // stateChanger(state,action)
     //覆盖原来的对象
-    state=stateChanger(state,action)
+    state=reducer(state,action)
     //遍历listeners数组里面的函数
     listeners.forEach((listener)=>listener())
   }
+  //初始化state
+  dispatch({})
   return {getState,dispatch,subscribe}
 }
 
@@ -66,16 +67,7 @@ function renderContent (newContent,oldContent={}) {
   contentDOM.style.color = newContent.color
 }
 
-const appState = {
-  title: {
-    text: 'React.js 小书',
-    color: 'red',
-  },
-  content: {
-    text: 'React.js 小书内容',
-    color: 'blue'
-  }
-}
+
 
 //新建一个newAppstate，复制appState
 let newAppState={
@@ -106,10 +98,36 @@ let newAppState1 = { // 新建一个 newAppState1
 //   }
 // }
 
+//将appState合并到stateChanger里去
+// const appState = {
+//   title: {
+//     text: 'React.js 小书',
+//     color: 'red',
+//   },
+//   content: {
+//     text: 'React.js 小书内容',
+//     color: 'blue'
+//   }
+// }
+
+
 //修改stateChanger，让它在修改数据的时候，
 // 不会直接修改原来的数据state，
 // 而是产生上述的共享结构的对象
 function stateChanger(state,action){
+  if(!state){
+    return{
+      title: {
+      text: 'React.js 小书',
+      color: 'red',
+      },
+      content: {
+      text: 'React.js 小书内容',
+      color: 'blue'
+      }
+    }
+
+  }
   switch(action.type){
     case 'UPDATE_TITLE_TEXT':
       // state.title.text = action.text
@@ -151,7 +169,7 @@ dispatch({
 //3.只需在dispath的switch的第一个case内部打个
 //断点就可以调试出来了
 
-let store=createStore(appState,stateChanger)
+let store=createStore(stateChanger)
 //缓存旧的state
 let oldState=store.getState()
 //由下面的dispatch可以看到，我们只需要修改title
@@ -174,3 +192,6 @@ store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: '《React.js a小书》' }) //
 store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'blue' }) // 修改标题颜色
 //由于添加了手动监听，所以就不需要再重新调用了
 // renderApp(store.getState()) // 把新的数据渲染到页面上
+
+
+
