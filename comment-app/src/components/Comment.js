@@ -1,9 +1,6 @@
 import React,{Component} from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types'
-
-
-class Comment extends Component{
+export default class Comment extends Component{
   static propTypes={
     //评论
     comment:PropTypes.object.isRequired,
@@ -59,14 +56,15 @@ class Comment extends Component{
       .replace(/`([\S\s]+?)`/g, '<code>$1</code>')
   }
   render(){
+    let comment=this.props.comment
     return(
       <div className='comment'>
         <div className='comment-user'>
-          <span>{this.props.comment.username}：</span>
+          <span>{comment.username}：</span>
         </div>
 
         <p dangerouslySetInnerHTML={{
-          __html:this._getProcessedContent(this.props.comment.content)
+          __html:this._getProcessedContent(comment.content)
         }}
 
           />
@@ -87,4 +85,4 @@ class Comment extends Component{
   }
 
 }
-export default Comment
+

@@ -1,31 +1,37 @@
-import React,{Component} from 'react';
-import ReactDOM from 'react-dom';
+import React,{Component} from 'react'
 import PropTypes from 'prop-types'
 
-
-class CommentInput extends Component{
+export default class CommentInput extends Component{
+  //改成dumb组件
+  //那么username需要从props上获取
   static propTypes={
-    fabuInputOut:PropTypes.func
+    username:PropTypes.any,
+    onSubmit:PropTypes.func,
+    onUserNameInputBlur:PropTypes.func
   }
 
-  constructor(){
-    super()
+  static defaultProps={
+    username:''
+  }
+
+  //初始化需要从props上获取字段
+  constructor(props){
+    super(props)
     this.state={
-      username:'',
+      username:props.username,
       content:'',
-      punishTime:''
     }
   }
   //发布按钮
-  fabuInputIn(){
+  handleSubmit(){
     //如果props中有fabu函数
-    if(this.props.fabuInputOut){
+    if(this.props.onSubmit){
       //重新定义变量把state中的属性传入
       //为什么?因为state改变不会立即改变
       // let {username,content}=this.state
       //就调用该函数，把username,content传进去
       //子传父
-      this.props.fabuInputOut({
+      this.props.onSubmit({
         username:this.state.username,
         content:this.state.content,
         punishTime: +new Date()
@@ -34,27 +40,25 @@ class CommentInput extends Component{
     //点击发布就清空内容
     this.setState({content:''})
   }
+
   //将用户名保存在localstroage中
   //所有私有方法都以 _开头
-
+  //handleUserNameChange
   changeUsername(event){
     this.setState({username:event.target.value})
   }
+  //handleContentChange
+  changeContent(event){
+    this.setState({content:event.target.value})
+  }
+
+  //saveUserName改从props获取
+  //saveUsername即从用户名框离开焦点
   saveUsername(event){
-    localStorage.setItem('username',event.target.value)
-    console.log(localStorage)
-  }
-
-  _loadUserName(){
-    let username=localStorage.getItem('username')
-    if(username){
-      this.setState({username})
+    if(this.props.onUserNameInputBlur){
+      //如存在就赋值
+      this.props.onUserNameInputBlur(event.target.value)
     }
-  }
-
-  //在渲染前加载用户名
-  componentWillMount(){
-    this._loadUserName()
   }
 
   render(){
@@ -74,12 +78,12 @@ class CommentInput extends Component{
         <div className='comment-field'>
           <span className='comment-field-name'>评论内容：</span>
           <div className='comment-field-input'>
-            <textarea  ref={(textarea)=>this.textareaa=textarea} value={this.state.content} onChange={(event)=>{this.setState({content:event.target.value})}}/>
+            <textarea  ref={(textarea)=>this.textareaa=textarea} value={this.state.content} onChange={this.changeContent.bind(this)}/>
           </div>
         </div>
 
         <div className='comment-field-button'>
-          <button onClick={this.fabuInputIn.bind(this)}>发布</button>
+          <button onClick={this.handleSubmit.bind(this)}>发布</button>
         </div>
       </div>
     )
@@ -91,4 +95,4 @@ class CommentInput extends Component{
 
 }
 
-export default CommentInput
+// export default CommentInput

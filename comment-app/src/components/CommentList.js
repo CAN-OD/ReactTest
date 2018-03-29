@@ -1,10 +1,9 @@
 import React,{Component} from 'react';
-import ReactDOM from 'react-dom';
 import Comment from './Comment'
 import PropTypes from 'prop-types'
 
 
-class CommentList extends Component{
+export default class CommentList extends Component{
   static propTypes={
     comments:PropTypes.array,
     onDeleteComment:PropTypes.func
@@ -27,16 +26,12 @@ class CommentList extends Component{
           (comment,i)=>
             <Comment
               comment={comment}
-              key={i}
+              key={comment.punishTime}
               index={i}
               onDeleteComment={this.handleDeleteComment.bind(this)}
-
             />
-
         )}
       </div>
     )
   }
 }
-
-export default CommentList

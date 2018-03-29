@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import CommentList from './CommentList';
 import CommentInput from "./CommentInput";
 
-class CommentApp extends Component {
+export default class CommentApp extends Component {
+ /*
   constructor(){
     super()
     this.state={
@@ -25,14 +26,15 @@ class CommentApp extends Component {
     this._loadComments()
   }
 
-  _loadComments(){
-    let comments=localStorage.getItem("comments")
-    if(comments){
-    //  将其转换为json格式
-      comments= JSON.parse(comments)
-      this.setState({comments})
-    }
-  }
+  //将这段移动到containers/CommentList下
+  // _loadComments(){
+  //   let comments=localStorage.getItem("comments")
+  //   if(comments){
+  //   //  将其转换为json格式
+  //     comments= JSON.parse(comments)
+  //     this.setState({comments})
+  //   }
+  // }
 
   _saveComments(comments){
     //将数组comments全部转化为字符串存进去
@@ -48,18 +50,22 @@ class CommentApp extends Component {
     this._saveComments(comments)
   }
 
-  render() {
-    //通过传入回调函数获取数据
-    return (
-      <div className='wrapper'>
+        <div className='wrapper'>
         <CommentInput fabuInputOut={this.fabuApp.bind(this)}/>
         <CommentList
           comments={this.state.comments}
           onDeleteComment={this.handleDeleteComment.bind(this)}
         />
       </div>
+*/
+  render() {
+    //通过传入回调函数获取数据
+    return (
+      <div className='wrapper'>
+        <CommentInput/>
+        <CommentList/>
+      </div>
     )
   }
 }
 
-export default CommentApp
