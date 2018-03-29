@@ -69,6 +69,7 @@ export const connect=(mapStateToProps,mapDispatchToProps)=>(WrapperComponent)=>{
       //{...stateProps}意思是
       // 把该对象里的属性都通过props方式传递进去
       // return <WrapperComponent {...stateProps}/>
+
       return <WrapperComponent {...this.state.allProps}/>
     }
   }

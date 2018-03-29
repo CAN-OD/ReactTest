@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'hand-redux'
+// import { connect } from './Connect'
+import { connect } from 'react-redux'
 
 class ThemeSwitch extends Component {
   // static contextTypes = {
@@ -35,7 +36,9 @@ class ThemeSwitch extends Component {
     //   type:'CHANGE_COLOR',
     //   themeColor:color
     // })
-    if(this.props.onSwitchColor){
+
+    if(this.props.onSwithColor){
+
      this.props.onSwithColor(color)
     }
   }

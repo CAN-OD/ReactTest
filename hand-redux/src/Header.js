@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'hand-redux'
+// import { connect } from './Connect'
+import { connect } from 'react-redux'
 
 class Header extends Component {
   // static contextTypes={
