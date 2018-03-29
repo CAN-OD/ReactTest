@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import ThemeSwitch from './ThemeSwitch'
+import ThemeSwitch from '../components/ThemeSwitch'
 // import { connect } from './Connect'
 import { connect } from 'react-redux'
 
@@ -45,5 +45,8 @@ const mapStateToProps=(state)=>{
     themeColor:state.themeColor
   }
 }
+/*
 Content=connect(mapStateToProps)(Content)
 export default Content
+*/
+export default connect(mapStateToProps)(Content)

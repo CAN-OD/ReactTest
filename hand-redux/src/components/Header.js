@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // import { connect } from './Connect'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
-class Header extends Component {
+export default class Header extends Component {
   // static contextTypes={
   //   store:PropTypes.object
   // }
@@ -44,12 +44,16 @@ class Header extends Component {
 
 //需要在子组件去定义mapStateToProps，来告诉
 //高级组件，子组件需要哪些状态
+/*
 const mapStateToProps=(state)=>{
   return {
     themeColor:state.themeColor
   }
 }
-Header=connect(mapStateToProps)(Header)
+*/
+//因为引用了connect，connect是react-redux里的，
+//所以header组件不能算dumb组件
+// Header=connect(mapStateToProps)(Header)
 
-export default Header
+// export default Header
 
