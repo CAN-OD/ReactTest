@@ -6,6 +6,7 @@ export default class CommentInput extends Component{
   //那么username需要从props上获取
   static propTypes={
     username:PropTypes.any,
+
     onSubmit:PropTypes.func,
     onUserNameInputBlur:PropTypes.func
   }
@@ -15,16 +16,18 @@ export default class CommentInput extends Component{
   }
 
   //初始化需要从props上获取字段
+  //即父传子
   constructor(props){
     super(props)
     this.state={
+      //即this.state.username赋值为props.username
       username:props.username,
       content:'',
     }
   }
   //发布按钮
   handleSubmit(){
-    //如果props中有fabu函数
+    //如果props中有onSubmit函数
     if(this.props.onSubmit){
       //重新定义变量把state中的属性传入
       //为什么?因为state改变不会立即改变
@@ -45,10 +48,13 @@ export default class CommentInput extends Component{
   //所有私有方法都以 _开头
   //handleUserNameChange
   changeUsername(event){
+    //用户在输入框改变username，我们就要时刻改变username的状态
     this.setState({username:event.target.value})
   }
   //handleContentChange
   changeContent(event){
+    //同理
+    //用户在输入框改变content，我们就要时刻改变content的状态
     this.setState({content:event.target.value})
   }
 
@@ -57,6 +63,7 @@ export default class CommentInput extends Component{
   saveUsername(event){
     if(this.props.onUserNameInputBlur){
       //如存在就赋值
+      //子传父
       this.props.onUserNameInputBlur(event.target.value)
     }
   }

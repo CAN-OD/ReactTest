@@ -17,19 +17,23 @@ class CommentListContainer extends Component{
 
   handleDeleteComment(index){
     // if(!index) return
+    //为什么不写let comments=this.props.comments?
+    //因为那样写的话，取其他的变量如aa就要重新写一条
+    //let aa=this.props.aa
+    //不如这么写 let {comments}=this.props
+    //这个意思就是取this.props里的comments，再
+    //想取aa的话，直接在大括号里加{comments,aa}即可，
+    //不需要再另写一条语句了
     let {comments}=this.props
   // props是不能变得，所以新建一个删除特定下标的评论列表
   //  这个删除是该组件自己新建一个变量去“删除”的
-
     let newComments=[
       ...comments.slice(0,index),
       ...comments.slice(index+1)
     ]
   //  删除后需要及时更新localstroage中的数据
   //保存最新的评论列表到localstroage
-      // console.log(newComments,32)
       localStorage.setItem("comments",JSON.stringify(newComments))
-    console.log(localStorage.getItem("comments"),322222222222)
   //  我们还要把要删除的评论传给this.props.onDeleteComment
     if(this.props.onDeleteComment){
     //  this.props.onDeleteComment是connect传进来的
@@ -49,6 +53,7 @@ class CommentListContainer extends Component{
 
   componentWillMount(){
   //  在这里初始化评论
+  //一般在这里获取数据
     this._loadComments()
   }
 
@@ -87,7 +92,6 @@ let mapDispatchToProps=(dispatch)=>{
 //将CommentListContainer connect到store
 //这样才能把comments、initComments、
 // onDeleteComment传给CommentListContainer
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps

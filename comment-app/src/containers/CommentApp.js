@@ -58,6 +58,8 @@ export default class CommentApp extends Component {
         />
       </div>
 */
+
+  //这边没有使用Provider提供的store
   render() {
     //通过传入回调函数获取数据
     return (

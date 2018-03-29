@@ -9,6 +9,8 @@ import './index.css'
 const store = createStore(commentsReducer)
 
 ReactDOM.render(
+  //provide（提供）了store
+  //store就给CommentApp去使用
   <Provider store={store}>
     <CommentApp />
   </Provider>,

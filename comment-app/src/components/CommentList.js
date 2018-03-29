@@ -13,6 +13,7 @@ export default class CommentList extends Component{
     comments:[]
   }
 
+  //用来接收子组件传来的index
   handleDeleteComment(index){
     if(this.props.onDeleteComment){
       this.props.onDeleteComment(index)
