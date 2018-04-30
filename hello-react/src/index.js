@@ -46,6 +46,8 @@ class LikeButton extends Component {
     )
   }
 }
+//========================
+
 
 //列表渲染
 let users = [
