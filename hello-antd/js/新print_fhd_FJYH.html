@@ -1,0 +1,505 @@
+﻿<div class='lop-print'>
+  <meta charset="UTF-8">
+  <title>福建华源-小票打印</title>
+  <script>
+    if(!window.auto){
+      //向文档中添加一条语句
+      document.write('<script src="../js/jquery.min.js" type="text/javascript"></sc'+'ript>')
+    }
+  </script>
+  <style type="text/css">
+    .lop-print {
+      font-family: "宋体", "simsun", "微软雅黑", "Arial Unicode MS", "Arial Narrow", HELVETICA !important;
+    }
+
+    .lop-print pre {
+      text-align: left;
+      font-family: "微软雅黑", "simsun", "宋体", "Arial Unicode MS", "Arial Narrow", HELVETICA !important;
+      /*忽略空白*/
+      white-space: normal;
+      margin: 0;
+      padding: 5px 5px;
+    }
+
+    .lop-print table {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 12pt;
+      font-weight: bold;
+      background-color: transparent;
+      /*边框合并成一线*/
+      border-collapse: collapse;
+
+      border-spacing: 0;
+    }
+
+    .lop-print table td {
+      padding-left: 5px;
+      line-height: 2em;
+      border: 1px solid #000000;
+    }
+
+    .lop-print span {
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .lop-print .rows {
+      width: 860px;
+      margin: 0 auto;
+      word-wrap: break-word;
+    }
+
+    .lop-print .rows h3 {
+      font-size: 1.8em;
+      -webkit-margin-before: 0em;
+      -webkit-margin-after: 0.7em;
+    }
+
+    .lop-print .center {
+      text-align: center !important;
+    }
+
+    .lop-print .rows label {
+      font-weight: bold;
+      font-size: 11px;
+    }
+  </style>
+  <div class="rows">
+    <div>
+      <div class="center head">
+        <h3>福建华源建材有限公司预拌混凝土交货单</h3>
+        <div class="lop-print" style="font-weight: bold;text-align: right;font-size: 12pt;padding-right: 15%;">地址：<span class="record" data-name="FGcdz">  </span></div>
+      </div>
+      <table class="rows" style="margin-bottom:3px;">
+        <tbody>
+        <tr>
+          <td  style="width:12em;border:none;line-height: 1em;">送货日期：</td>
+          <td  style="width:12em;border:none;line-height: 1em;">
+            <span class="record" data-name="FFhsj" data-type="date" data-flag="yyyy"> 年</span>
+            <span class="record" data-name="FFhsj" data-type="date" data-flag="MM"> 月</span>
+            <span class="record" data-name="FFhsj" data-type="date" data-flag="dd"> 日</span>
+          </td>
+          <td  style="width:10em;border:none;line-height: 1em;">搅拌楼编号：</td>
+          <td  style="width:10em;border:none;line-height: 1em;"><span class="record" data-name="FScbt"> </span> </td>
+          <td  style="width:10em;border:none;line-height: 1em;">编号：</td>
+          <td  style="width:10em;border:none;line-height: 1em;"><span class="record" data-name="FNo"> </span> </td>
+          <td  style="width:10em;border:none;line-height: 1em;">电话：</td>
+          <td  style="width:10em;border:none;line-height: 1em;"><span class="record" data-name="FXslxr"> </span> </td>
+        </tr>
+        </tbody>
+      </table>
+      <div style="height: 20px;margin-right: -3%;float: right;width: 20px;font-size: 1px;">
+        ①存底︵白︶②结算︵蓝︶③客户︵红︶④司机︵绿︶⑤财务︵黄︶
+      </div>
+      <table class="rows">
+        <tbody style="text-align: center">
+        <tr>
+          <td style="width:7em;">订货单位</td>
+          <td colspan="4" style="width:7em;height:4em;"><span class="record" data-name="FHtdw">  </span></td>
+          <td style="width:6em">合同编号</td>
+          <td colspan="3" style="width:6em;height:4em;"><span class="record" data-name="FHtno"> </span></td>
+        </tr>
+
+        <tr>
+          <td  style="width:7em;">工程名称</td>
+          <td colspan="4" style="width:7em;height:4em;"><span class="record" data-name="FGcmc">  </span></td>
+          <td style="width:6em">交货地点</td>
+          <td colspan="3" style="width:6em;height:4em;"><span class="record" data-name=""> </span></td>
+        </tr>
+
+        <tr>
+          <td style="width:7em;">浇筑部位</td>
+          <td colspan="4" style="width:7em;height:4em;"><span class="record" data-name="FJzbw">  </span></td>
+          <td style="width:6em">浇筑方式</td>
+          <td style="width:6em;height:4em;"><span class="record" data-name="FJzfs"> </span></td>
+          <td style="width:6em">配比编号</td>
+          <td style="width:6em;height:4em;"><span class="record" data-name="FPhbNo"> </span></td>
+        </tr>
+
+        <tr>
+          <td   style="width:7em;">标记</td>
+          <td colspan="2" style="width:7em;height:4em;"><span class="record" data-name="">  </span></td>
+          <td style="width:6em">强度等级</td>
+          <td style="width:6em;height:4em;"><span class="record" data-name="FTpz"> </span></td>
+          <td style="width:10em">最大粒径</td>
+          <td style="width:10em;height:4em;"><span class="record" data-name=""> </span></td>
+          <td style="width:10em">抗渗等级</td>
+          <td style="width:10em;height:4em;"><span class="record" data-name="FKsdj"> </span></td>
+        </tr>
+
+        <tr>
+          <td style="width:7em;">水泥品种</td>
+          <td colspan="2" style="width:8em;height:4em;"><span class="record" data-name=""  > </span></td>
+          <td  style="width:7em;">坍落度</td>
+          <td colspan="2" style="width:8em;height:4em;"><span class="record" data-name="FTld" > </span></td>
+          <td style="width:7em;">首盘时间</td>
+          <td  colspan="2" style="width:8em;height:4em;"><span class="record" data-name="" > </span></td>
+        </tr>
+
+        <tr>
+          <td style="width:7em;">运输车号</td>
+          <td style="width:7em;height:3em;"><span class="record" data-name="FShch">  </span></td>
+          <td style="width:6em">本车方量(m³)</td>
+          <td style="width:6em;height:4em;"><span class="record" data-name="FFhfs"> </span></td>
+          <td style="width:10em">累计方量(m³)</td>
+          <td style="width:10em;height:4em;"><span class="record" data-name="FLjfs"> </span></td>
+          <td style="width:10em">出厂时间</td>
+          <td colspan="2" style="width:10em;height:4em;">
+            <span class="record" data-name="FCcsj" data-type="date" data-flag="hh"> </span>
+            <span class="record" data-name="FCcsj" data-type="date" data-flag="mm"> </span>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="width:7em;">驾驶员</td>
+          <td style="width:7em;height:3em;"><span class="record" data-name="FSjxm">  </span></td>
+          <td style="width:6em">本车车次</td>
+          <td style="width:6em;height:4em;"><span class="record" data-name=""> </span></td>
+          <td style="width:10em">累计车次</td>
+          <td style="width:10em;height:4em;"><span class="record" data-name="FLjcs"> </span></td>
+          <td style="width:10em">到达时间</td>
+          <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name="FDdgdsj"> </span></td>
+        </tr>
+
+        <tr>
+          <td style="width:7em;">出厂质检</td>
+          <td style="width:7em;height:3em;"><span class="record" data-name="FCcqf">  </span></td>
+          <td style="width:6em">操作员</td>
+          <td style="width:6em;height:4em;"><span class="record" data-name="FDjrM"> </span></td>
+          <td style="width:10em">调度员</td>
+          <td style="width:10em;height:4em;"><span class="record" data-name="FCzy"> </span></td>
+          <td style="width:10em">卸料时间</td>
+          <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name=""> </span></td>
+        </tr>
+
+        <tr>
+          <td  rowspan="2" style="width:7em;">现场质检</td>
+          <td colspan="2" rowspan="2" style="width:7em;height:3em;"><span class="record" data-name="">  </span></td>
+          <td rowspan="2" style="width:6em">工地签收</td>
+          <td colspan="2" rowspan="2" style="width:6em;height:4em;"><span class="record" data-name="FYhqs"> </span></td>
+          <td style="width:10em">卸完时间</td>
+          <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name=""> </span></td>
+
+        </tr>
+
+        <tr>
+          <td style="width:10em">离开时间</td>
+          <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name="FLkgdsj"> </span></td>
+        </tr>
+        <tr>
+          <td style="width:7em;">备注</td>
+          <td colspan="8" style="width:7em;height:3em;"><span class="record" data-name="FBz">  </span></td>
+        </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!--云打印文件的优先级-->
+  <script src="http://localhost:18000/CLodopfuncs.js?priority=0"></script>
+  <script src="http://localhost:8000/CLodopfuncs.js?priority=1"></script>
+  <script src="/static/print/js/LodopFuncs.js"></script>
+  <script src="/static/print/js/xmprint.js"></script>
+  <script>
+    window.cusName=window.cusName||'福建华源建材有限公司';
+    var LODOP,P_ID='',c=0;
+    var datas=JSON.parse(sessionStorage.printNo);
+    var printNo=datas[window.cusName];
+    var fileSrc='E:/TFS-QC/TongLiFang/TQR-A/static/print/printSet.json';
+
+
+    $(function () {
+      //获取打印单编号
+      var fno = window.fno,print=true;
+      // console.log(fno,174)
+      if(!fno){
+        fno = GetQueryString("fno")|| 0;
+        print=false;
+      }
+      if (fno && fno != 0) {
+        callSapiServer("/print/fhd_q", function (result) {
+          console.log(result,fno)
+          if (!result.isException) {
+            var record = result.data?result.data[0]:{};
+
+            $(".record").each(function () {
+              var filedName = $(this).data("name");
+              if (filedName && filedName != "") {
+                var val = record[filedName]||'';
+                if(val != undefined && val.match(/^\d*\.\d{3}$/g) != null){
+                  val = parseFloat(val).toFixed(2);
+                }
+                if($(this).data("type")==='date'&&val){
+                  val=val?dateToFormat(val,$(this).data("flag")):val
+                }
+                else if($(this).data("type")==='time'){
+                  val=val?dateToFormat(val,'hh:mm:ss'):val
+                }
+                $(this).text(val);
+              }
+            });
+
+            setTimeout(lodopPrint, 1000);
+            function lodopPrint() {
+              //调用 lodp打印控件
+              LODOP = getLodop()
+              if(!LODOP) {
+                return;
+              }
+              if (LODOP.webskt && LODOP.webskt.readyState==1) {
+                function view(){
+                  //是打印数据移动
+                  //param:Top,Left,Width,Height,strPrintName
+                  // LODOP.PRINT_INITA(-8,-10,1920,1300,'')
+                  LODOP.PRINT_INITA("", "", 2400, 930, "")
+                  LODOP.SET_PRINT_PAGESIZE(1, 2400, 930, "")
+
+                  //打印方向及纸张类型
+                  /*
+                  1---纵向打印，固定纸张；
+                  2---横向打印，固定纸张；
+                  3---纵向打印，宽度固定，高度按打印内容的高度自适应(见样例18)；
+                  0---方向不定，由操作者自行选择或按打印机缺省设置。
+                  */
+
+                  //发给测试的一定要注释掉！！！========================
+                  // // 指定背景图
+                  // LODOP.ADD_PRINT_SETUP_BKIMG("E:\\bbb.jpg");
+                  // // 设置显示模式
+                  // LODOP.SET_SHOW_MODE("BKIMG_LEFT",0);
+                  // LODOP.SET_SHOW_MODE("BKIMG_TOP",0);
+                  // LODOP.SET_SHOW_MODE("BKIMG_WIDTH","240mm");
+                  // LODOP.SET_SHOW_MODE("BKIMG_HEIGHT","93mm");
+                  // LODOP.SET_SHOW_MODE("BKIMG_PRINT",true);
+//            ======================================================
+//             LODOP.SET_PRINT_STYLEA(0,"Horient",2);//设置对象在纸张范围内水平居中,
+
+//            工程地址
+                  LODOP.ADD_PRINT_TEXT(36, 712, 113, 20, record.FGcdz);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+//            送货日期
+                  LODOP.ADD_PRINT_TEXT(63, 125, 47, 20, record.FFhsj);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  LODOP.ADD_PRINT_TEXT(63, 185, 22, 20, record.FFhsj);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  LODOP.ADD_PRINT_TEXT(63, 224, 20, 20, record.FFhsj);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //搅拌楼编号
+                  LODOP.ADD_PRINT_TEXT(63, 365, 116, 20, record.FScbt);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //编号
+                  LODOP.ADD_PRINT_TEXT(63, 529, 131, 20, record.FNo);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //电话
+                  LODOP.ADD_PRINT_TEXT(63, 684, 113, 20, record.FXslxr);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //订货单位
+                  LODOP.ADD_PRINT_TEXT(83, 118, 374, 20, record.FHtdw);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //合同编号
+                  LODOP.ADD_PRINT_TEXT(83, 572, 217, 20, record.FHtno);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //工程名称
+                  LODOP.ADD_PRINT_TEXT(106, 118, 374, 20, record.FGcmc);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //浇筑部位
+                  LODOP.ADD_PRINT_TEXT(126, 118, 374, 20, record.FJzbw);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+
+                  //浇筑方式
+                  LODOP.ADD_PRINT_TEXT(126, 572, 91, 20, record.FJzfs);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //配比编号
+                  LODOP.ADD_PRINT_TEXT(126, 722, 74, 20, record.FPhbNo);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //强度等级
+                  LODOP.ADD_PRINT_TEXT(150, 410, 85, 20, record.FTpz);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //抗渗等级
+                  LODOP.ADD_PRINT_TEXT(150, 722, 74, 20, record.FKsdj);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //水泥品种
+                  // LODOP.ADD_PRINT_TEXT(258, 379, 85, 24, dateToFormat(record.FTpz, 'yyyy-MM-ddhh-mm-ss'));
+                  LODOP.ADD_PRINT_TEXT(176, 118, 198, 20, record.FTpz);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //坍落度
+                  LODOP.ADD_PRINT_TEXT(176, 408, 125, 20, record.FTld);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //运输车号
+                  LODOP.ADD_PRINT_TEXT(200, 118, 111, 20, record.FShch, '');
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+
+                  //本车方量
+                  LODOP.ADD_PRINT_TEXT(200, 315, 96, 20, record.FFhfs);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //累计方量
+                  LODOP.ADD_PRINT_TEXT(200, 493, 80, 20, record.FLjfs);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //出厂时间
+                  LODOP.ADD_PRINT_TEXT(200, 657, 66, 20, record.FCcsj);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  LODOP.ADD_PRINT_TEXT(200, 740, 36, 20, record.FCcsj);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //驾驶员
+                  LODOP.ADD_PRINT_TEXT(223, 118, 105, 20, record.FSjxm);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+
+                  //累计车次
+                  LODOP.ADD_PRINT_TEXT(223,  493, 80, 20, record.FLjcs);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //到达时间
+                  // LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FDdgdsj);
+                  // LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //出厂质检
+                  LODOP.ADD_PRINT_TEXT(247, 118, 107, 20, record.FCcqf);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //操作员
+                  LODOP.ADD_PRINT_TEXT(247, 315, 96, 20, record.FDjrM);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //调度员
+                  LODOP.ADD_PRINT_TEXT(247,  493, 80, 20, record.FDjrM);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //工地签收
+                  LODOP.ADD_PRINT_TEXT(263, 408, 166, 40, record.FYhqs);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //离开时间
+                  // LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FLkgdsj);
+                  // LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+                  //备注
+                  LODOP.ADD_PRINT_TEXT(310, 118, 671, 26, record.FBz);
+                  LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+
+
+
+                }
+
+                if(print){
+                  getFile(LODOP,function(v){
+                    LODOP.On_Return=null;
+                    var info={}
+                    info=eval('(' + v + ')');//将字符串转换为JSON
+                    console.log(info,sessionStorage.cusName)
+                    // alert(v)
+                    var printBt=sessionStorage.FScbt?info[sessionStorage.FScbt]:'';
+                    //有设置打印机就用设置值 否则用默认打印机
+                    if (printBt.printIndex!=='') {
+                      // LODOP.PRINT();
+                      // LODOP.PREVIEW();
+                      view();
+                      let datas=JSON.parse(sessionStorage.printNo||{[cusName]:[]})
+                      let arr=datas[cusName]||[];
+                      if(arr.indexOf(fno)<0){
+                        LODOP.SET_PRINTER_INDEXA(printBt.printIndex);//设置对应打印机
+
+                        if (LODOP.CVERSION) {
+                          LODOP.On_Return=function(TaskID,Value){
+                            P_ID=Value;
+                            // document.getElementById('T12A').value=P_ID;
+                            if (P_ID!="") { c=0;cwaiting(fno);}
+                          };
+                          LODOP.SET_PRINT_MODE("CATCH_PRINT_STATUS",true)
+                          //=====================================
+                          LODOP.PRINT();
+                          // LODOP.PRINT_SETUP();
+                          // LODOP.PREVIEW();
+
+
+
+                        } else {
+                          LODOP.SET_PRINT_MODE("CATCH_PRINT_STATUS",true)
+                          P_ID=LODOP.PRINT();
+                          // document.getElementById('T12A').value=P_ID;
+                          if (P_ID!="") { c=0;waiting(fno);}
+                        }
+
+                      }
+
+                    }
+                  })
+
+                }else{
+                  view()
+                  LODOP.PREVIEW();
+                }
+              }
+            }
+          }
+
+        }, "POST", { fno: fno }, false)
+      }
+
+      function getFile(LODOP,callback){
+        if (LODOP.CVERSION){
+          LODOP.On_Return=function(TaskID,Value){callback(Value)};
+        }
+        var strResult=LODOP.GET_FILE_TEXT(fileSrc);
+        if (!LODOP.CVERSION) return strResult; else return '';
+      }
+
+      function waiting(fno){
+        c=c+1;
+        t=setTimeout(waiting,1000);
+        if (LODOP.GET_VALUE("PRINT_STATUS_OK",P_ID)) {
+          clearTimeout(t);
+          c=0;
+          arr.push(fno)
+          datas[cusName]=arr;
+          sessionStorage.printNo=JSON.stringify(datas);
+          $('[class=print-'+fno+']').html('')
+
+          console.log("打印成功！");
+        }if ((!LODOP.GET_VALUE("PRINT_STATUS_EXIST",P_ID))&&(c>0)) {
+          clearTimeout(t);
+          c=0;
+          console.log("打印任务被删除！");
+        } else if (c>30){
+          clearTimeout(t);
+          c=0;
+          console.log("打印超过30秒没捕获到成功状态！");
+        }
+      }
+
+      function cwaiting(fno){
+        c=c+1;
+        t=setTimeout(cwaiting,1000);
+        LODOP.On_Return_Remain=true;
+        LODOP.On_Return=function(TaskID,Value){
+          console.log('c---',Value,TaskID,TaskID1)
+          if (TaskID==TaskID1){
+            if (Value==1){console.log(TaskID+">>>>>"+Value);
+              clearTimeout(t);
+              arr.push(fno)
+              datas[cusName]=arr;
+              sessionStorage.printNo=JSON.stringify(datas);
+              $('[class=print-'+fno+']').html('')
+              c=0;
+              console.log("打印成功！");
+            }
+          } else
+          if (TaskID==TaskID2){
+            if (Value==0){
+              clearTimeout(t);
+              // document.getElementById('T12B').value="打印任务被删除！";
+              c=0;
+              $('[class=print-'+fno+']').html('')
+              console.log("打印任务被删除！");
+            }
+          }
+        }
+        TaskID1=LODOP.GET_VALUE("PRINT_STATUS_OK",P_ID);
+        TaskID2=LODOP.GET_VALUE("PRINT_STATUS_EXIST",P_ID);
+        if (c>50){
+          clearTimeout(t);
+          // document.getElementById('T12B').value="打印超时(50秒)！";
+          $('[class=print-'+fno+']').html('')
+          c=0;
+          console.log("打印超过50秒没捕获到成功状态！");
+        }
+      }
+    })
+
+  </script>
+</div>

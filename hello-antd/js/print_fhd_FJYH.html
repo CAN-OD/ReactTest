@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>福建华源-小票打印</title>
+  <style type="text/css">
+    body {
+      font-family: "宋体", "simsun", "微软雅黑", "Arial Unicode MS", "Arial Narrow", HELVETICA !important;
+    }
+
+    pre {
+      text-align: left;
+      font-family: "微软雅黑", "simsun", "宋体", "Arial Unicode MS", "Arial Narrow", HELVETICA !important;
+      /*忽略空白*/
+      white-space: normal;
+      margin: 0;
+      padding: 5px 5px;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 12pt;
+      font-weight: bold;
+      background-color: transparent;
+      /*边框合并成一线*/
+      border-collapse: collapse;
+
+      border-spacing: 0;
+    }
+
+    table td {
+      padding-left: 5px;
+      line-height: 4em;
+      border: 1px solid #000000;
+    }
+
+    span {
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .rows {
+      width: 860px;
+      margin: 0 auto;
+      word-wrap: break-word;
+    }
+
+    .rows h3 {
+      font-size: 1.8em;
+      -webkit-margin-before: 0em;
+      -webkit-margin-after: 0.7em;
+    }
+
+    .center {
+      text-align: center !important;
+    }
+
+    .rows label {
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+
+
+  </style>
+  <script src="../js/jquery.min.js"></script>
+  <script src="js/xmprint.js"></script>
+</head>
+
+<body class="rows">
+
+  <div>
+    <div class="center head">
+      <h3>福建华源建材有限公司预拌混凝土交货单</h3>
+      <div class="lop-print" style="font-weight: bold;text-align: right;font-size: 12pt;padding-right: 15%;">地址：<span class="record" data-name="FGcdz">  </span></div>
+    </div>
+    <table class="rows" style="margin-bottom:3px;">
+      <tbody>
+      <tr>
+        <td  style="width:12em;border:none;line-height: 1em;">送货日期：</td>
+        <td  style="width:12em;border:none;line-height: 1em;">
+          <span class="record" data-name="FFhsj" data-type="date" data-flag="yyyy"> 年</span>
+          <span class="record" data-name="FFhsj" data-type="date" data-flag="MM"> 月</span>
+          <span class="record" data-name="FFhsj" data-type="date" data-flag="dd"> 日</span>
+        </td>
+        <td  style="width:10em;border:none;line-height: 1em;">搅拌楼编号：</td>
+        <td  style="width:10em;border:none;line-height: 1em;"><span class="record" data-name="FScbt"> </span> </td>
+        <td  style="width:10em;border:none;line-height: 1em;">编号：</td>
+        <td  style="width:10em;border:none;line-height: 1em;"><span class="record" data-name="FNo"> </span> </td>
+        <td  style="width:10em;border:none;line-height: 1em;">电话：</td>
+        <td  style="width:10em;border:none;line-height: 1em;"><span class="record" data-name="FXslxr"> </span> </td>
+      </tr>
+      </tbody>
+    </table>
+    <div style="height: 20px;margin-right: -3%;float: right;width: 20px;font-size: 1px;">
+      ①存底︵白︶②结算︵蓝︶③客户︵红︶④司机︵绿︶⑤财务︵黄︶
+    </div>
+    <table class="rows">
+      <tbody style="text-align: center">
+      <tr>
+        <td style="width:7em;">订货单位</td>
+        <td colspan="4" style="width:7em;height:4em;"><span class="record" data-name="FHtdw">  </span></td>
+        <td style="width:6em">合同编号</td>
+        <td colspan="3" style="width:6em;height:4em;"><span class="record" data-name="FHtno"> </span></td>
+      </tr>
+
+      <tr>
+        <td  style="width:7em;">工程名称</td>
+        <td colspan="4" style="width:7em;height:4em;"><span class="record" data-name="FGcmc">  </span></td>
+        <td style="width:6em">交货地点</td>
+        <td colspan="3" style="width:6em;height:4em;"><span class="record" data-name=""> </span></td>
+      </tr>
+
+      <tr>
+        <td style="width:7em;">浇筑部位</td>
+        <td colspan="4" style="width:7em;height:4em;"><span class="record" data-name="FJzbw">  </span></td>
+        <td style="width:6em">浇筑方式</td>
+        <td style="width:6em;height:4em;"><span class="record" data-name="FJzfs"> </span></td>
+        <td style="width:6em">配比编号</td>
+        <td style="width:6em;height:4em;"><span class="record" data-name="FPhbNo"> </span></td>
+      </tr>
+
+      <tr>
+        <td   style="width:7em;">标记</td>
+        <td colspan="2" style="width:7em;height:4em;"><span class="record" data-name="">  </span></td>
+        <td style="width:6em">强度等级</td>
+        <td style="width:6em;height:4em;"><span class="record" data-name="FTpz"> </span></td>
+        <td style="width:10em">最大粒径</td>
+        <td style="width:10em;height:4em;"><span class="record" data-name=""> </span></td>
+        <td style="width:10em">抗渗等级</td>
+        <td style="width:10em;height:4em;"><span class="record" data-name="FKsdj"> </span></td>
+      </tr>
+
+      <tr>
+        <td style="width:7em;">水泥品种</td>
+        <td colspan="2" style="width:8em;height:4em;"><span class="record" data-name=""  > </span></td>
+        <td  style="width:7em;">坍落度</td>
+        <td colspan="2" style="width:8em;height:4em;"><span class="record" data-name="FTld" > </span></td>
+        <td style="width:7em;">首盘时间</td>
+        <td  colspan="2" style="width:8em;height:4em;"><span class="record" data-name="" > </span></td>
+      </tr>
+
+      <tr>
+        <td style="width:7em;">运输车号</td>
+        <td style="width:7em;height:3em;"><span class="record" data-name="FShch">  </span></td>
+        <td style="width:6em">本车方量(m³)</td>
+        <td style="width:6em;height:4em;"><span class="record" data-name="FFhfs"> </span></td>
+        <td style="width:10em">累计方量(m³)</td>
+        <td style="width:10em;height:4em;"><span class="record" data-name="FLjfs"> </span></td>
+        <td style="width:10em">出厂时间</td>
+        <td colspan="2" style="width:10em;height:4em;">
+          <span class="record" data-name="FCcsj" data-type="date" data-flag="hh"> </span>
+          <span class="record" data-name="FCcsj" data-type="date" data-flag="mm"> </span>
+        </td>
+      </tr>
+
+      <tr>
+        <td style="width:7em;">驾驶员</td>
+        <td style="width:7em;height:3em;"><span class="record" data-name="FSjxm">  </span></td>
+        <td style="width:6em">本车车次</td>
+        <td style="width:6em;height:4em;"><span class="record" data-name=""> </span></td>
+        <td style="width:10em">累计车次</td>
+        <td style="width:10em;height:4em;"><span class="record" data-name="FLjcs"> </span></td>
+        <td style="width:10em">到达时间</td>
+        <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name="FDdgdsj"> </span></td>
+      </tr>
+
+      <tr>
+        <td style="width:7em;">出厂质检</td>
+        <td style="width:7em;height:3em;"><span class="record" data-name="FCcqf">  </span></td>
+        <td style="width:6em">操作员</td>
+        <td style="width:6em;height:4em;"><span class="record" data-name="FDjrM"> </span></td>
+        <td style="width:10em">调度员</td>
+        <td style="width:10em;height:4em;"><span class="record" data-name="FCzy"> </span></td>
+        <td style="width:10em">卸料时间</td>
+        <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name=""> </span></td>
+      </tr>
+
+      <tr>
+        <td  rowspan="2" style="width:7em;">现场质检</td>
+        <td colspan="2" rowspan="2" style="width:7em;height:3em;"><span class="record" data-name="">  </span></td>
+        <td rowspan="2" style="width:6em">工地签收</td>
+        <td colspan="2" rowspan="2" style="width:6em;height:4em;"><span class="record" data-name="FYhqs"> </span></td>
+        <td style="width:10em">卸完时间</td>
+        <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name=""> </span></td>
+
+      </tr>
+
+      <tr>
+        <td style="width:10em">离开时间</td>
+        <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name="FLkgdsj"> </span></td>
+      </tr>
+      <tr>
+        <td style="width:7em;">备注</td>
+        <td colspan="8" style="width:7em;height:3em;"><span class="record" data-name="FBz">  </span></td>
+      </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
+<script src="http://localhost:18000/CLodopfuncs.js?priority=0"></script>
+<script src="http://localhost:8000/CLodopfuncs.js?priority=1"></script>
+<script src="js/LodopFuncs.js"></script>
+<script src="js/xmprint.js"></script>
+<script>
+  $(function () {
+    var fno = GetQueryString('fno');
+    if (fno && fno != 0) {
+      callSapiServer("/print/fhd_q", function (result) {
+        console.log(result)
+        if (!result.isException) {
+          var record = result.data?result.data[0]:{};
+          setTimeout(lodopPrint, 1000);
+          function lodopPrint() {
+            //调用 lodp打印控件
+            var LODOP = getLodop();
+            LODOP.PRINT_INITA("", "", 2400, 930, "")
+            LODOP.SET_PRINT_PAGESIZE(1, 2400, 930, "")
+
+            //发给测试的一定要注释掉！！！========================
+            // 指定背景图
+            LODOP.ADD_PRINT_SETUP_BKIMG("E:\\bbb.jpg");
+            // 设置显示模式
+            LODOP.SET_SHOW_MODE("BKIMG_LEFT",0);
+            LODOP.SET_SHOW_MODE("BKIMG_TOP",0);
+            LODOP.SET_SHOW_MODE("BKIMG_WIDTH","240mm");
+            LODOP.SET_SHOW_MODE("BKIMG_HEIGHT","93mm");
+            LODOP.SET_SHOW_MODE("BKIMG_PRINT",true);
+//                      左上、左左、长、宽
+//            =========================================
+            //          工程地址
+            LODOP.ADD_PRINT_TEXT(85, 537, 113, 20, record.FGcdz);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+//            送货日期
+            LODOP.ADD_PRINT_TEXT(106, 117, 131, 60, record.FFhsj);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 10);
+            LODOP.ADD_PRINT_TEXT(106, 117, 131, 60, record.FFhsj);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 10);
+            LODOP.ADD_PRINT_TEXT(106, 117, 131, 60, record.FFhsj);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 10);
+            //搅拌楼编号
+            LODOP.ADD_PRINT_TEXT(106, 328, 131, 60, record.FScbt);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 10);
+            //编号
+            LODOP.ADD_PRINT_TEXT(106, 539, 131, 60, record.FNo);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 10);
+            //电话
+            LODOP.ADD_PRINT_TEXT(186, 43, 80, 25, record.FXslxr);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //订货单位
+            LODOP.ADD_PRINT_TEXT(186, 125, 65, 25, record.FHtdw);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //合同编号
+            LODOP.ADD_PRINT_TEXT(186, 211, 161, 24, record.FHtno);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //工程名称
+            LODOP.ADD_PRINT_TEXT(186, 379, 131, 24, record.FGcmc);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //浇筑部位
+            LODOP.ADD_PRINT_TEXT(186, 553, 70, 24, record.FJzbw);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+
+            //浇筑方式
+            LODOP.ADD_PRINT_TEXT(258, 43, 81, 25, record.FJzfs);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //配比编号
+            LODOP.ADD_PRINT_TEXT(258, 125, 85, 25, record.FPhbNo);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //强度等级
+            LODOP.ADD_PRINT_TEXT(258, 211, 85, 25, record.FTpz);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //抗渗等级
+            LODOP.ADD_PRINT_TEXT(258, 297, 80, 24, record.FKsdj);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //水泥品种
+            // LODOP.ADD_PRINT_TEXT(258, 379, 85, 24, dateToFormat(record.FTpz, 'yyyy-MM-ddhh-mm-ss'));
+            LODOP.ADD_PRINT_TEXT(258, 379, 85, 24, record.FTpz);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //坍落度
+            LODOP.ADD_PRINT_TEXT(258, 465, 85, 24, record.FTld);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //运输车号
+            LODOP.ADD_PRINT_TEXT(258, 553, 106, 24, record.FShch, '');
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+
+            //本车方量
+            LODOP.ADD_PRINT_TEXT(327, 45, 81, 29, record.FFhfs);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //累计方量
+            LODOP.ADD_PRINT_TEXT(327, 127, 163, 35, record.FLjfs);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //出厂时间
+            LODOP.ADD_PRINT_TEXT(327, 299, 160, 32, record.FCcsj);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            LODOP.ADD_PRINT_TEXT(327, 299, 160, 32, record.FCcsj);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //驾驶员
+            LODOP.ADD_PRINT_TEXT(327, 468, 170, 32, record.FSjxm);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+
+            //累计车次
+            LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FLjcs);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //到达时间
+            // LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FDdgdsj);
+            // LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //出厂质检
+            LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FCcqf);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //操作员
+            LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FDjrM);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //调度员
+            LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FDjrM);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //工地签收
+            LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FYhqs);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //离开时间
+            // LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FLkgdsj);
+            // LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //备注
+            LODOP.ADD_PRINT_TEXT(363, 210, 433, 68, record.FBz);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+
+
+
+//
+            LODOP.PRINT_SETUP();
+            LODOP.PREVIEW();
+          }
+          $(".record").each(function () {
+            var filedName = $(this).data("name");
+            if (filedName && filedName != "") {
+              var val = record[filedName];
+              if(val != undefined && val.match(/^\d*\.\d{3}$/g) != null)
+                val = parseFloat(val).toFixed(2);
+              if($(this).data("type")==='date'&&val){
+                val=val?dateToFormat(val,$(this).data("flag")):val
+              }
+              else if($(this).data("type")==='time'){
+                val=val?dateToFormat(val,'hh:mm:ss'):val
+              }
+              $(this).text(val);
+            }
+          });
+        }
+      }, "POST", { fno: fno }, false)
+    }
+  })
+
+</script>

@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>吴江永盛-小票打印</title>
+  <style type="text/css">
+    body {
+      font-family: "宋体", "simsun", "微软雅黑", "Arial Unicode MS", "Arial Narrow", HELVETICA !important;
+    }
+
+    pre {
+      text-align: left;
+      font-family: "微软雅黑", "simsun", "宋体", "Arial Unicode MS", "Arial Narrow", HELVETICA !important;
+      /*忽略空白*/
+      white-space: normal;
+      margin: 0;
+      padding: 5px 5px;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 12pt;
+      font-weight: bold;
+      background-color: transparent;
+      /*边框合并成一线*/
+      border-collapse: collapse;
+
+      border-spacing: 0;
+    }
+
+    table td {
+      padding-left: 5px;
+      line-height: 4em;
+      border: 1px solid #000000;
+    }
+
+    span {
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .rows {
+      width: 860px;
+      margin: 0 auto;
+      word-wrap: break-word;
+    }
+
+    .rows h3 {
+      font-size: 1.8em;
+      -webkit-margin-before: 0em;
+      -webkit-margin-after: 0.7em;
+    }
+
+    .center {
+      text-align: center !important;
+    }
+
+    .rows label {
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+
+
+  </style>
+  <script src="../js/jquery.min.js"></script>
+  <script src="js/xmprint.js"></script>
+</head>
+
+<body class="rows">
+<div>
+  <div class="center head">
+    <h3>吴江永盛混凝土有限公司</h3>
+    <h3>混凝土送货单</h3>
+    <h3>(1)</h3><h3 style="float: right;margin-top:  -6%;margin-right: 23%;">编号：<span class="record" data-name="FNo">  </span></h3>
+  </div>
+  <table class="rows" style="margin-bottom:3px;">
+    <tbody>
+    <tr>
+      <td  style="width:5em;border:none;line-height: 1em;">施工单位：</td>
+      <td  style="width:11em;border-left:none;border-top:none;border-right:none;line-height: 1em;"> <span class="record" data-name="FHtdw"> </span></td>
+      <td  style="width:5em;border:none;line-height: 1em;">工程名称：</td>
+      <td  style="width:11em;border-left:none;border-top:none;border-right:none;line-height: 1em;"><span class="record" data-name="FGcmc"> </span> </td>
+      <td  style="width:5em;border:none;line-height: 1em;">施工部位：</td>
+      <td  style="width:10em;border-left:none;border-top:none;border-right:none;line-height: 1em;"><span class="record" data-name="FJzbw"> </span> </td>
+    </tr>
+    </tbody>
+  </table>
+  <div style="height: 20px;margin-right: -3%;float: right;width: 20px;font-size: 1px;">
+    一、存根︵白︶二、结算联︵红︶三、工地︵蓝︶四、监理︵绿︶五、驾驶员︵黄︶
+
+  </div>
+  <table class="rows">
+    <tbody style="text-align: center">
+    <tr>
+      <td style="width:7em;">生产线</td>
+      <td style="width:6em">配比单号</td>
+      <td colspan="2" style="width:10em">混凝土标号</td>
+      <td colspan="2" style="width:10em">坍落度</td>
+      <td style="width:8em">是否泵送</td>
+    </tr>
+    <tr>
+      <td style="width:7em;height:4em;"><span class="record" data-name="FScbt">  </span></td>
+      <td style="width:6em;height:4em;"><span class="record" data-name="FPhbNo"> </span></td>
+      <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name="FTpz"> </span></td>
+      <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name="FTld"> </span></td>
+      <td style="width:8em;height:4em;"><span class="record" data-name="FJzfs"> </span></td>
+    </tr>
+    <tr>
+      <td style="width:7em;">车号</td>
+      <td style="width:6em">本车方量</td>
+      <td style="width:10em">累计方量</td>
+      <td style="width:10em">运输距离</td>
+      <td style="width:8em">发车时间</td>
+      <td style="width:8em">回站时间</td>
+      <td style="width:8em">日期</td>
+    </tr>
+    <tr>
+      <td style="width:7em;height:4em;"><span class="record" data-name="FShch">  </span></td>
+      <td style="width:6em;height:4em;"><span class="record" data-name="FFhfs"> </span></td>
+      <td style="width:10em;height:4em;"><span class="record" data-name="FLjfs"> </span></td>
+      <td style="width:10em;height:4em;"><span class="record" data-name="FGls"> </span></td>
+      <td style="width:8em;height:4em;"><span class="record" data-name="FFhsj" data-type="date" data-flag="hh-mm-ss"> </span></td>
+      <td style="width:8em;height:4em;"><span class="record" data-name="FJcsj" data-type="date" data-flag="hh-mm-ss"> </span></td>
+      <td style="width:8em;height:4em;"><span class="record" data-name="FDjsj" data-type="date" data-flag="yyyy-MM-dd"> </span></td>
+    </tr>
+    <tr>
+      <td style="width:7em;">操作员</td>
+      <td colspan="2" style="width:6em">驾驶员签名</td>
+      <td colspan="2" style="width:10em">调度员签名</td>
+      <td colspan="2" style="width:10em">工地负责人签名</td>
+    </tr>
+    <tr>
+      <td style="width:7em;height:3em;"><span class="record" data-name="FDjrM">  </span></td>
+      <td colspan="2" style="width:6em;height:4em;"><span class="record" data-name="FSjxm"> </span></td>
+      <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name="FCzy"> </span></td>
+      <td colspan="2" style="width:10em;height:4em;"><span class="record" data-name="FFzr"> </span></td>
+
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="2" style="width:7em;height:6em;">附加说明</td>
+      <td colspan="5" rowspan="2" style="width:6em;height:6em;"><span class="record" data-name="FXslxr"> </span> </td>
+    </tr>
+    </tbody>
+  </table>
+  <div style="margin-left: 10px;margin-top: 10px;">
+    请施工单位在卸料前确认工程名称、强度等级及数量
+  </div>
+</div>
+
+</body>
+</html>
+<script src="http://localhost:18000/CLodopfuncs.js?priority=0"></script>
+<script src="http://localhost:8000/CLodopfuncs.js?priority=1"></script>
+<script src="js/LodopFuncs.js"></script>
+<script src="js/xmprint.js"></script>
+<script>
+  $(function () {
+    //获取打印单编号
+    var fno = GetQueryString('fno');
+    if (fno && fno != 0) {
+      callSapiServer("/print/fhd_q", function (result) {
+        console.log(result)
+        if (!result.isException) {
+          var record = result.data?result.data[0]:{};
+          setTimeout(lodopPrint, 1000);
+          function lodopPrint() {
+            //调用 lodp打印控件
+            var LODOP = getLodop();
+            //背景整体移动，而打印的数据位置不变，从而调整位置
+            //param:Top,Left,Width,Height,strPrintName
+            LODOP.PRINT_INITA(-8,-10,1920,1300,'')
+            //发给测试的一定要注释掉！！！========================
+            // LODOP.PRINT_INIT("");
+            //打印方向及纸张类型
+            /*
+            1---纵向打印，固定纸张；
+            2---横向打印，固定纸张；
+            3---纵向打印，宽度固定，高度按打印内容的高度自适应(见样例18)；
+            0---方向不定，由操作者自行选择或按打印机缺省设置。
+            */
+            // LODOP.SET_PRINT_PAGESIZE(1, 1920, 1300, '')
+            //指定背景图
+            // LODOP.ADD_PRINT_SETUP_BKIMG("E:\\vb.jpg");
+            //设置显示模式
+            // LODOP.SET_SHOW_MODE("BKIMG_LEFT",0);
+            // LODOP.SET_SHOW_MODE("BKIMG_TOP",0);
+            // LODOP.SET_SHOW_MODE("BKIMG_WIDTH","190mm");
+            // LODOP.SET_SHOW_MODE("BKIMG_HEIGHT","126mm");
+            // LODOP.SET_SHOW_MODE("BKIMG_PRINT",true);
+//            ======================================================
+//             LODOP.SET_PRINT_STYLEA(0,"Horient",2);//设置对象在纸张范围内水平居中,
+//                      左上、左左、长、宽
+//          编号
+//          增加纯文本打印项
+            LODOP.ADD_PRINT_TEXT(95,537,113,20,record.FNo);
+            //(增强型) 设置打印项风格A,继承SET_PRINT_STYLE的所有属性
+            //该函数只对单个打印项有效。
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+//            施工单位
+            LODOP.ADD_PRINT_TEXT(124,128,191,20,record.FHtdw);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //工程名称
+            LODOP.ADD_PRINT_TEXT(124,326,196,20,record.FGcmc);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //施工部位
+            LODOP.ADD_PRINT_TEXT(124,537,138,20  ,record.FJzbw);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //生产线
+            LODOP.ADD_PRINT_TEXT(186,43,80,25,record.FScbt);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //配比单号
+            LODOP.ADD_PRINT_TEXT(186,125,65,25, record.FPhbNo);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //混凝土标号
+            LODOP.ADD_PRINT_TEXT(186,208,131,24,record.FTpz);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //坍落度
+            LODOP.ADD_PRINT_TEXT(186,376,131,24,record.FTld);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //是否泵送
+            LODOP.ADD_PRINT_TEXT(186,550,70,24,record.FJzfs);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //===========================
+            //车号
+            LODOP.ADD_PRINT_TEXT(258,43,81,25, record.FShch);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //本车方量
+            LODOP.ADD_PRINT_TEXT(258,125,85,25, record.FFhfs);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //累计方量
+            LODOP.ADD_PRINT_TEXT(258,208,85,25, record.FLjfs);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //运输距离
+            LODOP.ADD_PRINT_TEXT(258,294,80,24, record.FGls);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //发车时间
+            LODOP.ADD_PRINT_TEXT(258,376,85,24, dateToFormat(record.FFhsj, 'hh-mm-ss'));
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //回站时间
+            LODOP.ADD_PRINT_TEXT(258,462,85,24, dateToFormat(record.FJcsj, 'hh-mm-ss'));
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //日期
+            LODOP.ADD_PRINT_TEXT(258,550,106,24, dateToFormat(record.FDjsj, 'yyyy-MM-dd'));
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //=======================
+            //操作员
+            LODOP.ADD_PRINT_TEXT(327,45,81,29, record.FDjrM);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //驾驶员签名
+            LODOP.ADD_PRINT_TEXT(327,127,163,35, record.FSjxm);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //调度员签名
+            LODOP.ADD_PRINT_TEXT(327,299,160,32, record.FCzy);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //工地负责人签名
+            LODOP.ADD_PRINT_TEXT(327,468,170,32, record.FFzr);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //=======================
+            //附加说明
+            LODOP.ADD_PRINT_TEXT(363,210,433,68, record.FXslxr);
+            LODOP.SET_PRINT_STYLEA(0, "FontSize", 11);
+            //发给测试时一定要注释掉！！！=================
+            //打印维护
+            // LODOP.PRINT_SETUP();
+            //============================================
+            //打印预览
+            LODOP.PREVIEW();
+          }
+          $(".record").each(function () {
+            var filedName = $(this).data("name");
+            if (filedName && filedName != "") {
+              var val = record[filedName];
+              if(val != undefined && val.match(/^\d*\.\d{3}$/g) != null){
+                val = parseFloat(val).toFixed(2);
+              }
+              if($(this).data("type")==='date'&&val){
+                val=val?dateToFormat(val,$(this).data("flag")):val
+              }
+              else if($(this).data("type")==='time'){
+                val=val?dateToFormat(val,'hh:mm:ss'):val
+              }
+              $(this).text(val);
+            }
+          });
+        }
+      }, "POST", { fno: fno }, false)
+    }
+  })
+
+</script>
